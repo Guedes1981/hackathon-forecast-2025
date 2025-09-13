@@ -29,3 +29,5 @@ hackathon-forecast-2025/
 ```
 
 _Atualizado: 2025-09-13 19:20 UTC_
+
+**Entregável final**: `reports/submission_final_JAN2023.csv` (UTF-8, `;`).
