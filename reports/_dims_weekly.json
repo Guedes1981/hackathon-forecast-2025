@@ -1,0 +1,9 @@
+{
+  "n_rows_weekly": 6241315,
+  "n_pairs_pdv_produto": 1044310,
+  "semanas_min": "2021-12-27",
+  "semanas_max": "2022-12-26",
+  "weekday_counts": {
+    "0": 6241315
+  }
+}

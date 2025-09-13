@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+.env
+
+# OS
+.DS_Store
+
+# Data/Artifacts
+data/raw/*
+!data/raw/.gitkeep
+models/
+reports/*.csv
+reports/*.parquet
+reports/*.html
+reports/*.png
+reports/_*.md
+reports/_*.csv
+
+# Colab/Notebooks
+.ipynb_checkpoints/
+data/processed/*
+notebooks/.ipynb_checkpoints/
