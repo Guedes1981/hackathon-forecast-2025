@@ -26,3 +26,4 @@ reports/_*.csv
 data/processed/*
 notebooks/.ipynb_checkpoints/
 reports/submission_*.csv
+!reports/_release_notes.md
