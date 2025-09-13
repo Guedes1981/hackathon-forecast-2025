@@ -25,3 +25,4 @@ reports/_*.csv
 .ipynb_checkpoints/
 data/processed/*
 notebooks/.ipynb_checkpoints/
+reports/submission_*.csv
