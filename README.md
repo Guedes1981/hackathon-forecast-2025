@@ -22,17 +22,17 @@ Esquema (inteiros): `semana;pdv;produto;quantidade`
 pip install -r requirements.txt
 # ou, se estiver no Colab, instale as libs usadas nos scripts (pandas, pyarrow, prophet/cmdstanpy etc.)
 
-2) Treinar Prophet Top-N (val4) e salvar métricas
+### 2) Treinar Prophet Top-N (val4) e salvar métricas
 python -u src/train_prophet_topn.py --top_n 200 --changepoint_prior_scale 0.8 --val_split val4 --out_parquet data/processed/prophet_topN_val4_preds.parquet --report reports/_prophet_val4_metrics.csv
 
-3) (Produção) Gerar previsões de Jan/2023 com Prophet
+### 3) (Produção) Gerar previsões de Jan/2023 com Prophet
 
 O script recorta Jan/2023 a partir do resultado de validação e salva o parquet de produção.
 
 python -u src/train_prophet_topn.py --predict_jan2023 --out_parquet data/processed/prophet_topN_jan2023_preds.parquet
 # Obs.: se não houver saídas do Prophet para Jan, o ensemble usa fallback (baseline) apenas para permitir a composição.
 
-4) Rodar Ensemble (Prophet + Baseline) e exportar submissão
+### 4) Rodar Ensemble (Prophet + Baseline) e exportar submissão
 
 python -u src/forecast_ensemble.py \
   --prophet_parquet data/processed/prophet_topN_jan2023_preds.parquet \
@@ -45,7 +45,7 @@ python -u src/make_submission.py \
   --out_csv reports/submission_final_JAN2023.csv \
   --checks_md reports/_submission_checks.md
 
-5) Verificações rápidas
+### 5) Verificações rápidas
 
 head -n 3 reports/submission_final_JAN2023.csv
 # deve exibir:
