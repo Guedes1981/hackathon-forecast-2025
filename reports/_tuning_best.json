@@ -1,0 +1,7 @@
+{
+  "top_n": 200.0,
+  "changepoint_prior_scale": 0.8,
+  "wmape_val4": 1.33688334101288,
+  "n_pairs_predicted": 40.0,
+  "rows_pred": 176.0
+}
