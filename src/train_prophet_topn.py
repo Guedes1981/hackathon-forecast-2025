@@ -10,8 +10,10 @@ def wmape(y_true, y_pred):
     return np.nan if denom == 0 else np.sum(np.abs(y_true - y_pred)) / denom
 
 parser = argparse.ArgumentParser()
+    parser.add_argument("--predict_jan2023", action="store_true", help="Gera previsões de produção para Jan/2023 (02–23/01)")
+    parser.add_argument("--predict-jan2023", dest="predict_jan2023_dash", action="store_true", help="Alias para --predict_jan2023")
 parser.add_argument("--top_n", type=int, default=200)
-args = parser.parse_args()
+args = parser.parse_known_args()[0]
 
 PROJECT_DIR = resolve_project_dir()
 wk = pd.read_parquet(PROJECT_DIR / "data" / "processed" / "train_weekly_splits.parquet")
