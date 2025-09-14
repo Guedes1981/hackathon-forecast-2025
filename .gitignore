@@ -27,3 +27,12 @@ data/processed/*
 notebooks/.ipynb_checkpoints/
 reports/submission_*.csv
 !reports/_release_notes.md
+data/**
+!data/**/.gitkeep
+!data/raw/
+!data/processed/
+!data/interim/
+!data/external/
+data/processed/*.parquet
+data/interim/*
+!data/
