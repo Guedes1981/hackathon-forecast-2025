@@ -1,0 +1,16 @@
+# Core data/IO
+pandas>=2.0
+numpy>=1.24
+pyarrow>=14.0
+fastparquet>=2024.2.0
+
+# Modeling
+prophet>=1.1.5
+cmdstanpy>=1.2.0
+tqdm>=4.66
+
+# Viz (optional but handy)
+matplotlib>=3.8
+
+# CLI/Utils
+click>=8.1
