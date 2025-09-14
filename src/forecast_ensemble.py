@@ -6,7 +6,7 @@ from common import resolve_project_dir
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--top_n", type=int, default=200)
-args = parser.parse_args()
+args = parser.parse_known_args()[0]
 
 PROJECT_DIR = resolve_project_dir()
 wk_path = PROJECT_DIR / "data" / "processed" / "train_weekly_splits.parquet"

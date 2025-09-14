@@ -10,8 +10,10 @@ def wmape(y_true, y_pred):
     return np.nan if denom == 0 else np.sum(np.abs(y_true - y_pred)) / denom
 
 parser = argparse.ArgumentParser()
-    parser.add_argument("--predict_jan2023", action="store_true", help="Gera previsões de produção para Jan/2023 (02–23/01)")
-    parser.add_argument("--predict-jan2023", dest="predict_jan2023_dash", action="store_true", help="Alias para --predict_jan2023")
+
+parser.add_argument("--predict_jan2023", action="store_true", help="Gera previsões de produção para Jan/2023 (02–23/01)")
+
+parser.add_argument("--predict-jan2023", dest="predict_jan2023", action="store_true", help="Alias para --predict_jan2023")
 parser.add_argument("--top_n", type=int, default=200)
 args = parser.parse_known_args()[0]
 
@@ -75,3 +77,15 @@ score = wmape(preds["y"].values, preds["yhat"].values) if len(preds) else np.nan
    .to_csv(PROJECT_DIR / "reports" / "_prophet_val4_metrics.csv", index=False))
 print(PROJECT_DIR / "data" / "processed" / "prophet_topN_val4_preds.parquet")
 print(PROJECT_DIR / "reports" / "_prophet_val4_metrics.csv")
+
+def _save_prophet_jan_from_val4(out_parquet, jan_ini="2023-01-02", jan_fim="2023-01-23"):
+    import os, pandas as pd
+    val4 = "data/processed/prophet_topN_val4_preds.parquet"
+    if not os.path.exists(val4):
+        raise FileNotFoundError(f"Arquivo não encontrado: {val4}")
+    df = pd.read_parquet(val4)
+    # Mantém apenas as colunas esperadas e a janela de JAN/2023
+    cols = [c for c in ["sku_id","pdv_id","ds","yhat"] if c in df.columns]
+    df = df.loc[(df["ds"] >= jan_ini) & (df["ds"] <= jan_fim), cols]
+    df.to_parquet(out_parquet, index=False)
+    print(f"OK - prophet Jan salvo: {out_parquet} | linhas: {len(df)}")
